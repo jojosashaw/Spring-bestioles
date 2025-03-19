@@ -102,6 +102,23 @@ public class BestiolesApplication implements CommandLineRunner {
         System.out.println("L'animal appartient-il à une personne query ? " + appartient);
 
         System.out.println("Fin TP05");
+        System.out.println("DÉBUT TP06");
+
+        long beforeCount1 = personneRepository.count();
+        System.out.println("Nombre de personnes AVANT suppression custom: " + beforeCount1);
+
+        personneRepository.deletePersonsWithoutAnimals();
+
+        long afterCount1 = personneRepository.count();
+        System.out.println("Nombre de personnes APRÈS suppression custom: " + afterCount1);
+
+        long beforeCount2 = personneRepository.count();
+        System.out.println("Nombre de personnes AVANT génération custom: " + beforeCount2);
+
+        personneRepository.generateRandomPersons(10);
+
+        long afterCount2 = personneRepository.count();
+        System.out.println("Nombre de personnes APRÈS génération custom: " + afterCount2);
     }
 
 }
