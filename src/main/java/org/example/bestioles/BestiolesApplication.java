@@ -69,6 +69,7 @@ public class BestiolesApplication implements CommandLineRunner {
         List<Personne> personnes2 = personneRepository.findByAgeGreaterThanEqual(33);
         System.out.println("Personnes de 33 ans ou plus : " + personnes2);
 
+        //fonctionne pas
         //Espece espece = especeRepository.findById(1).orElseThrow();
         //List<Animal> animal1 = animalRepository.findAnimalByEspece(1);
         //System.out.println("Animaux par espèce : " + animal1);
@@ -77,6 +78,28 @@ public class BestiolesApplication implements CommandLineRunner {
         List<Animal> animal2 = animalRepository.findByCouleurIn(couleurs);
         System.out.println("Animaux par list couleur : " + animal2);
 
+        System.out.println("FIN TP04");
+        System.out.println("DÉBUT TP05");
+
+        List<Espece> especeTriees = especeRepository.findAllOrderedByNomCommun();
+        System.out.println("Espèces triées query: " + especeTriees);
+
+        List<Espece> especeExacte = especeRepository.findByNomCommunExact("Lapin");
+        System.out.println("Espèce trouvée avec le nom query : " + especeExacte);
+
+        List<Personne> personnesAge = personneRepository.findByAgeBetween(20, 30);
+        System.out.println("Personnes entre 20 et 30 ans query: " + personnesAge);
+
+        Animal animal3 = animalRepository.findById(1).orElseThrow();
+        List<Personne> personnesAvecAnimal = personneRepository.findByAnimal(animal3);
+        System.out.println("Personnes possédant l'animal query: " + personnesAvecAnimal);
+
+        long  nbMales = animalRepository.countBySex("M");
+        System.out.println("Nombre d'animaux mâles query : " + nbMales);
+
+        Animal animal4 = animalRepository.findById(1).orElseThrow();
+        boolean appartient = animalRepository.existsByPerson(animal4);
+        System.out.println("L'animal appartient-il à une personne query ? " + appartient);
     }
 
 }
