@@ -100,6 +100,8 @@ public class BestiolesApplication implements CommandLineRunner {
         Animal animal4 = animalRepository.findById(1).orElseThrow();
         boolean appartient = animalRepository.existsByPerson(animal4);
         System.out.println("L'animal appartient-il à une personne query ? " + appartient);
+
+        System.out.println("Fin TP05");
     }
 
 }
